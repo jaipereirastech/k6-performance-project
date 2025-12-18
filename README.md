@@ -1,9 +1,3 @@
-Com base no arquivo **Orientações Desafio.txt**, o README é a parte mais crítica da sua entrega. O documento diz explicitamente: *"Se o script estiver perfeito, mas o README não demonstrar onde os conceitos foram aplicados no código, você perderá pontos"* .
-
-Abaixo está o **README.md completo**, formatado exatamente conforme as exigências (apresentando os trechos de código e explicando os conceitos).
-
-Você pode copiar e colar este conteúdo diretamente no seu arquivo `README.md`.
-
 ---
 
 # Desafio de Performance com K6

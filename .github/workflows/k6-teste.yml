@@ -1,0 +1,36 @@
+name: Execução de Teste de Performance K6
+
+# Gatilhos: roda quando faz push na main ou manualmente (botão no GitHub)
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  k6_performance_test:
+    name: Rodar K6 e Gerar Relatório
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Baixa o código do seu repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Instala o K6 no ambiente do GitHub
+      - name: Configurar K6
+        uses: grafana/setup-k6-action@v1
+
+      # 3. Executa o script
+      # 'continue-on-error: true' garante que o relatório seja salvo
+      # mesmo que os Thresholds (limites) falhem.
+      - name: Executar Teste K6
+        run: k6 run test/k6/desafio-performance.js
+        continue-on-error: true
+
+      # 4. Salva o relatório HTML como um artefato para download
+      - name: Upload do Relatório HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-k6
+          path: relatorio_k6.html
+          retention-days: 30
